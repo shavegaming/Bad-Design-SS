@@ -3,98 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDSS - Bad Design SS</title>
+    <title>BDSS - Elite Server-Side Suite</title>
     <style>
-        /* Reset & basic styling */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #1e1e1e; color: #fff; line-height: 1.6; }
-        a { color: #00bfff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        /* Basic Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1b1b1b, #111);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
         /* Container */
-        .container { width: 90%; max-width: 1000px; margin: auto; padding: 20px; }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            padding: 80px 0;
+        }
 
-        /* Header */
-        header { text-align: center; padding: 50px 0; }
-        header h1 { font-size: 3rem; margin-bottom: 10px; }
-        header p { font-size: 1.2rem; color: #aaa; }
+        /* Title & Hype */
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+            color: #00bfff;
+        }
+        h2 {
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
 
-        /* Sections */
-        section { padding: 40px 0; border-bottom: 1px solid #333; }
-        section:last-child { border-bottom: none; }
-
-        /* Buttons */
-        .btn {
+        /* Features List */
+        ul.features {
+            list-style: none;
+            text-align: left;
             display: inline-block;
-            padding: 12px 25px;
-            background: #00bfff;
+            margin-bottom: 50px;
+        }
+        ul.features li {
+            margin: 15px 0;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul.features li::before {
+            content: '✧';
+            position: absolute;
+            left: 0;
+            color: #00bfff;
+        }
+
+        /* Discord Button */
+        .btn {
+            padding: 15px 35px;
+            border-radius: 10px;
+            background: #5865f2;
             color: #fff;
-            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
             transition: 0.3s;
         }
-        .btn:hover { background: #009acd; }
+        .btn:hover {
+            background: #4752c4;
+        }
 
-        /* Script list */
-        .script-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .script-card { background: #2a2a2a; padding: 20px; border-radius: 10px; width: 250px; text-align: center; }
-        .script-card h3 { margin-bottom: 10px; }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        h1, h2, ul.features, .btn {
+            animation: fadeIn 1s ease forwards;
+        }
+        h1 { animation-delay: 0.2s; }
+        h2 { animation-delay: 0.4s; }
+        ul.features { animation-delay: 0.6s; }
+        .btn { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>BDSS</h1>
-        <p>Bad Design SS - The ultimate Roblox script suite</p>
-    </header>
-
     <div class="container">
+        <h1>✦ B A D D E S I G N S S ✦</h1>
+        <h2>E L I T E S E R V E R - S I D E  S U I T E</h2>
 
-        <!-- Download Section -->
-        <section id="download">
-            <h2>Download</h2>
-            <p>Get the latest version of BDSS and start scripting instantly.</p>
-            <a href="#" class="btn">Download BDSS</a>
-        </section>
+        <ul class="features">
+            <li>Free, Fast, and Feature-Packed</li>
+            <li>Sleek & Sexy UI (Dashboard • Executor • ScriptHub • Settings)</li>
+            <li>Stable • Clean • High-Performance</li>
+            <li>Constant Updates & New Additions</li>
+            <li>One of the Best Modern ServerSides on the Market</li>
+        </ul>
 
-        <!-- Features Section -->
-        <section id="features">
-            <h2>Features</h2>
-            <ul>
-                <li>Admin Panel Integration</li>
-                <li>Script Hub Support</li>
-                <li>NSFW & SFW Access Keys</li>
-                <li>Custom GUI & Themes</li>
-                <li>Premium & Free Versions</li>
-            </ul>
-        </section>
-
-        <!-- Script Hub Section -->
-        <section id="scripts">
-            <h2>Script Hub</h2>
-            <div class="script-list">
-                <div class="script-card">
-                    <h3>Admin Scripts</h3>
-                    <a href="#" class="btn">View</a>
-                </div>
-                <div class="script-card">
-                    <h3>Main Scripts</h3>
-                    <a href="#" class="btn">View</a>
-                </div>
-                <div class="script-card">
-                    <h3>Custom Scripts</h3>
-                    <a href="#" class="btn">View</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact / Info Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Join our Discord or follow our socials for updates and support.</p>
-            <a href="https://discord.gg/YOURDISCORD" class="btn">Join Discord</a>
-        </section>
-
+        <a href="https://discord.gg/pRsnAunjh" class="btn">Join Our Discord</a>
     </div>
 
+    <footer>
+        &copy; 2025 BDSS | Modern Server-Side Suite
+    </footer>
 </body>
 </html>
