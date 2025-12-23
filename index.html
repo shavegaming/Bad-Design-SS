@@ -3,118 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDSS - Elite Server-Side Suite</title>
+    <title>BDSS | Elite Server-Side Suite</title>
     <style>
-        /* Basic Reset */
+        :root {
+            --primary: #00bfff;
+            --accent: #5865f2;
+            --bg: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1b1b1b, #111);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: radial-gradient(circle at top right, #1a1a2e, #0a0a0a);
             color: #fff;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Container */
+        /* Subtle Animated Background Mesh */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .container {
             width: 90%;
-            max-width: 900px;
+            max-width: 800px;
             margin: auto;
             text-align: center;
-            padding: 80px 0;
+            padding: 60px 20px;
+            z-index: 2;
         }
 
-        /* Title & Hype */
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 0.3em;
-            margin-bottom: 20px;
-            color: #00bfff;
+        /* Hero Section */
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to bottom, #fff 30%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
-        h2 {
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            color: #aaa;
+
+        .hero h2 {
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+
+        /* Features Glass Card */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
             margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Features List */
-        ul.features {
+        .features {
             list-style: none;
             text-align: left;
-            display: inline-block;
-            margin-bottom: 50px;
-        }
-        ul.features li {
-            margin: 15px 0;
-            font-size: 1rem;
-            position: relative;
-            padding-left: 25px;
-        }
-        ul.features li::before {
-            content: '✧';
-            position: absolute;
-            left: 0;
-            color: #00bfff;
+            display: grid;
+            gap: 20px;
         }
 
-        /* Discord Button */
-        .btn {
-            padding: 15px 35px;
-            border-radius: 10px;
-            background: #5865f2;
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
+        .features li {
+            font-size: 1.05rem;
+            color: #ccc;
+            display: flex;
+            align-items: center;
             transition: 0.3s;
         }
+
+        .features li:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        .features li::before {
+            content: "→";
+            margin-right: 15px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Action Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 45px;
+            border-radius: 12px;
+            background: #fff;
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
         .btn:hover {
-            background: #4752c4;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.3);
         }
 
-        /* Footer */
+        .btn-discord {
+            background: var(--accent);
+            color: white;
+            margin-top: 10px;
+        }
+
         footer {
+            margin-top: auto;
+            padding: 40px;
+            color: #444;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             text-align: center;
-            padding: 30px 0;
-            color: #555;
-            font-size: 0.9rem;
         }
 
-        /* Animations */
-        h1, h2, ul.features, .btn {
-            animation: fadeIn 1s ease forwards;
-        }
-        h1 { animation-delay: 0.2s; }
-        h2 { animation-delay: 0.4s; }
-        ul.features { animation-delay: 0.6s; }
-        .btn { animation-delay: 0.8s; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
 
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>✦ B A D D E S I G N S S ✦</h1>
-        <h2>E L I T E S E R V E R - S I D E  S U I T E</h2>
+        <header class="hero animate">
+            <h1>BDSS</h1>
+            <h2>SERVER-SIDE SUITE</h2>
+        </header>
 
-        <ul class="features">
-            <li>Free, Fast, and Feature-Packed</li>
-            <li>Sleek & Sexy UI (Dashboard • Executor • ScriptHub • Settings)</li>
-            <li>Stable • Clean • High-Performance</li>
-            <li>Constant Updates & New Additions</li>
-            <li>One of the Best Modern ServerSides on the Market</li>
-        </ul>
+        <div class="glass-card animate delay-1">
+            <ul class="features">
+                <li>Free, Fast, and Feature-Packed</li>
+                <li>Sleek UI (Dashboard • Executor • ScriptHub)</li>
+                <li>Stable & High-Performance Core</li>
+                <li>Weekly Updates & New Modules</li>
+                <li>Industry-Leading Modern Architecture</li>
+            </ul>
+        </div>
 
-        <a href="https://discord.gg/pRsnAunjh" class="btn">Join Our Discord</a>
+        <div class="animate delay-2">
+            <a href="https://discord.gg/pRsnAunjh" class="btn btn-discord">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.026-.07 8.14 8.14 0 0 1-1.185-.563.05.05 0 0 1-.001-.088c.081-.06.163-.122.242-.184a.051.051 0 0 1 .054-.007c2.632 1.212 5.486 1.212 8.085 0a.051.051 0 0 1 .054.007c.08.062.16.124.242.184a.05.05 0 0 1-.001.088 8.029 8.029 0 0 1-1.19.563.05.05 0 0 0-.026.07c.236.466.51.91.819 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
+                </svg>
+                Join Discord
+            </a>
+        </div>
     </div>
 
-    <footer>
-        &copy; 2025 BDSS | Modern Server-Side Suite
+    <footer class="animate delay-3">
+        &copy; 2025 BDSS | ESTABLISHED FOR EXCELLENCE
     </footer>
+
 </body>
 </html>
